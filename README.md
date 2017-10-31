@@ -1,7 +1,7 @@
 # Title
 
 # Abstract
-A 150 word description of the project idea, goals, dataset used. What story you would like to tell and why? What's the motivation behind your project?
+A 150 word description of the project idea, goals, dataset used. What story you would like to tell and why? What's the motivation behind your project??
 
 # Research questions
 A list of research questions you would like to address during the project. 
