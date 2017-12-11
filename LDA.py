@@ -12,17 +12,16 @@ sc = SparkContext()
 sqlContext = SQLContext(sc)
 data = sc.textFile("/datasets/tweets-leon")
 
+def selection_tweet(tweet):
+    contents = tweet.split("\t")
+    if (contents[0] == "en"):
+        if (len(contents) == 5):
+            return True
+    return False
 
-def selection_tweet(tweet): return len(tweet.split("\t")) == 5
 
-def encode_tweet(tweet): return [t.encode("utf8") for t in tweet.split("\t")]
-
-"""Data in english"""
-data = data.filter(selection_tweet)
-en_data = data.filter(lambda x : x[:2]=='en')
-
-"""Encode UTF-8"""
-en_data = en_data.map(encode_tweet)
+"""Data in english and has complet 5 fields"""
+en_data = data.filter(selection_tweet)
 
 """Take only ID and CONTENT of a tweet"""
 tweets = en_data.map(lambda tweet : Row(id=tweet[1], sentence=tweet[4]))
